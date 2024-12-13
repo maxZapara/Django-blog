@@ -1,0 +1,44 @@
+{% extends '../base.html' %}
+{% block head %}
+<title>Profile</title>
+<link rel="stylesheet" href="static/style.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="profile">
+    <div class="profile-header">
+        {% if user.profile.image %}
+            <img src="/static{{user.profile.image.url}}" alt="">  
+        {% endif %}
+        <h1>{{user.username}}</h1>
+    </div>
+
+    <div class="profile-content">
+        <form method="POST" class="profile-image-form" enctype="multipart/form-data" action="/profile">
+            <h3>Change profile image:</h3>
+            {% csrf_token %} 
+            {{image_form}}
+            <input type="submit" value="Change">
+
+        </form>
+        <form action="/profile/change/email" method="POST" class="profile-email-form">
+            {% csrf_token %} 
+            <h3>Change email:</h3>
+            <input type="email" value="{{user.email}}" name="email">
+            <input type="submit" value="Change">
+        </form>
+        <form action="/profile/change/password" method="POST" class="profile-password-form">
+            {% csrf_token %} 
+            <h3>Confirm your password</h3>
+            <input type="password" placeholder="Old password" name="old_password">
+            <input type="password" placeholder="New password" name="password">
+            <input type="password" placeholder="Confirm new password" name="confirm_password">
+            <input type="submit" value="Change">
+            
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

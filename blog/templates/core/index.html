@@ -1,0 +1,30 @@
+{% extends '../base.html' %} {% block head %}
+<title>Doc</title>
+<link rel="stylesheet" href="static/style.css" />
+{% endblock %} {% block content %}
+
+<div class="posts-container">
+  {% for post in posts %}
+  <div class="post">
+    <h2>{{post.title}}</h2>
+    <div class="post-content">{{post.content|safe}}</div>
+    <div class="post-footer">
+      <div>
+        <a href="{% url 'post_view' post_id=post.id %}">Read more</a>
+        <small>Posted by {{ post.author }} on {{ post.created_at }}</small>
+      </div>
+      <div>
+        <a href="{% url 'toggle_save_post' post_id=post.id %}" class="media-save">
+            {% if post in user.profile.saved_posts.all %}
+            <img src="/static/media/save.svg" alt="">
+            {% else %}
+            <img src="/static/media/like.svg" alt="">
+            {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

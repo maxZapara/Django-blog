@@ -1,0 +1,13 @@
+{% extends '../base.html' %}
+{% block head %}
+<title>Registration</title>
+<link rel="stylesheet" href="static/style.css">
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token%}
+        {{form}}
+        <input type="submit" value="Register">
+    </form>
+{% endblock %}

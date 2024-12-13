@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        h1{
+            text-align: center;
+            text-transform: uppercase;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+            background-color: darkcyan;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 3px solid cyan;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Django blog: {{user.username}}</h1>
+    <h3>Please click on the button below to confirm yor email:</h3>
+    <a href="http://127.0.0.1:8000{% url 'activate_email' token=token uid=uid %}">Confirm email</a>
+</body>
+</html>
