@@ -30,10 +30,18 @@
 
 <script>
 
-        async function removeComment(comment_id) {
-                const response=await fetch(`http://localhost:8000/posts/comments/${comment_id}/delete`);
+        async function removeComment(comment_id){
+                const csrf_token=document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                const response=await fetch(`http://localhost:8000/posts/comments/${comment_id}/delete`,{
+                method: 'POST',
+                headers:{
+                        'X-CSRFToken': csrf_token,
+                        'Content-Type': 'application/json'
+                }
+                })
                 return response.ok
-        }
+        } 
 
         let comment_buttons = document.querySelectorAll("#Capa_1")
         comment_buttons.forEach(button =>{

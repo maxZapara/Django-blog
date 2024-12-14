@@ -1,0 +1,10 @@
+/blog/venv/Lib/*
+/blog/venv/Scripts/django-admin.exe
+/blog/venv/Scripts/easy_install.exe
+/blog/venv/Scripts/easy_install-3.9.exe
+/blog/venv/Scripts/pip.exe
+/blog/venv/Scripts/pip3.9.exe
+/blog/venv/Scripts/pip3.exe
+/blog/venv/Scripts/python.exe
+/blog/venv/Scripts/pythonw.exe
+/blog/venv/Scripts/sqlformat.exe

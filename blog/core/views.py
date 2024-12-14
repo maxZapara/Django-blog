@@ -65,7 +65,11 @@ def delete_comment(request,comment_id):
     from django.shortcuts import get_object_or_404
     from django.http import JsonResponse
 
-    comment=get_object_or_404(Comment, id=comment_id)
-    comment.delete()
+    
+    if request.method == 'POST':
+        comment=get_object_or_404(Comment, id=comment_id)
+        comment.delete()
 
-    return JsonResponse({"status":"success"})
+        return JsonResponse({"status":"success"})
+    
+    return JsonResponse({"status":"error"}, status=400)

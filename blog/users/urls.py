@@ -7,10 +7,12 @@ urlpatterns = [
     path('registration', views.registration, name="registration"),
     path('login', views.login, name="login" ),
     path("logout", views.logout, name="logout"),
-    path("posts/save/<post_id>", views.toggle_save_post, name="toggle_save_post"),
     path('profile', views.profile, name="profile"),
     path('profile/change/email', views.change_email, name="change_email"),
     path('profile/change/password', views.change_password, name="change_password"),
+
+    path("posts/save/<post_id>", views.toggle_save_post, name="toggle_save_post"),
+
     
     path("activate/<token>/<uid>", views.activate, name="activate_email"),
 
